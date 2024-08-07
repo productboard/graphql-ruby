@@ -96,6 +96,7 @@ SETUP_NODE_CLASS_VARIABLE(SchemaExtension)
 %token TYPE_LITERAL 234
 %token UNION 235
 %token VAR_SIGN 236
+%token COMMENT 240
 
 %%
 
@@ -523,6 +524,12 @@ type_system_definition:
   description_opt:
       /* none */      { $$ = Qnil; }
     | description
+
+  comment: COMMENT
+
+  comment_opt:
+      /* none */      { $$ = Qnil; }
+    | comment
 
   scalar_type_definition:
       description_opt SCALAR name directives_list_opt {
